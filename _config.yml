@@ -12,27 +12,26 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Site Title"
-title_separator          : "-"
-subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Your Name"
-description              : "An amazing website."
-url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+title                    : "Mike Mylonakis"
+title_separator          : "|"
+name                     : "Mike Mylonakis"
+description              : "Blog and personal website of Mike Mylonakis. Opinions expressed here are my own and do not necessarily reflect those of my employer"
+url                      : "https://mikemylonakis.com"
+#baseurl                  : "/minimal-mistakes"
+repository               : "sestus/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
+logo                     : "/assets/images/author.png"
+masthead_title           : "Mike Mylonakis"
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
-  provider               : # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
+  provider               : "disqus" #"disqus", "discourse", "facebook", "google-plus", "staticman", "staticman_v2" "custom"
   disqus:
-    shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname            : "mikemylonakis"
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
@@ -65,14 +64,14 @@ reCaptcha:
   secret                 :
 atom_feed:
   path                   : # blank (default) uses feed.xml
-search                   : # true, false (default)
-search_full_content      : # true, false (default)
-search_provider          : # lunr (default), algolia, google
+search                   : true
+search_full_content      : true
+search_provider          : algolia
 algolia:
-  application_id         : # YOUR_APPLICATION_ID
-  index_name             : # YOUR_INDEX_NAME
-  search_only_api_key    : # YOUR_SEARCH_ONLY_API_KEY
-  powered_by             : # true (default), false
+  application_id         : YLTCJ4RT60
+  index_name             : BLOG
+  search_only_api_key    : cb4283ddf0b52f254fb0950da56ab86d
+  powered_by             : false # true (default), false
 google:
   search_engine_id       : # YOUR_SEARCH_ENGINE_ID
   instant_search         : # false (default), true
@@ -96,6 +95,10 @@ social:
   type                   : # Person or Organization (defaults to Person)
   name                   : # If the user or organization name differs from the site's name
   links: # An array of links to social media profiles
+    - "www.linkedin.com/in/mmylonak"
+    - "https://www.facebook.com/mike.mylonak"
+    - "https://github.com/sestus"
+    - "https://stackoverflow.com/users/2254704/sestus"
 
 # Analytics
 analytics:
@@ -107,30 +110,30 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Somewhere"
+  name             : "Mike Mylonakis"
+  avatar           : "/assets/images/author.png"
+  bio              : "Quantitative Developer - Data Scientist at UBS."
+  location         : "London, UK"
   email            :
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: mailto:your.name@email.com
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      # url: "https://your-website.com"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url: "https://twitter.com/"
+      url: mailto:mike@mikemylonakis.com
+    - label: "Keybase"
+      icon: "fas fa-fw fa-key"
+      url: "https://keybase.io/sestus"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin-in"
+      url: "https://www.linkedin.com/in/mmylonak"
     - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url: "https://facebook.com/"
+      icon: "fab fa-fw fa-facebook"
+      url: "https://www.facebook.com/mike.mylonak"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
+      url: "https://github.com/sestus"
+    - label: "StackOverflow"
+      icon: "fab fa-fw fa-stack-overflow"
+      url: "https://stackoverflow.com/users/2254704/sestus"
 
 # Site Footer
 footer:
@@ -165,6 +168,8 @@ exclude:
   - vendor
   - .asset-cache
   - .bundle
+  - .gitignore
+  - .idea
   - .jekyll-assets-cache
   - .sass-cache
   - assets/js/plugins
@@ -223,7 +228,7 @@ sass:
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: "Europe/London"
 
 
 # Plugins (previously gems:)
@@ -293,3 +298,14 @@ defaults:
       comments: # true
       share: true
       related: true
+
+# Mike
+typed_lines:
+  - text: "Stop overthinking... Start doing"
+dynamic-typing: true
+shuffle: true # Shuffle the lines.
+loop: false
+loop-count: false # Set False for infinite loop, or set any number for finite loop.
+type-speed: 8
+start-delay: 200
+delete-delay: 5000
