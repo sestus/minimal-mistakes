@@ -90,7 +90,7 @@ social:
   type                   : # Person or Organization (defaults to Person)
   name                   : # If the user or organization name differs from the site's name
   links: # An array of links to social media profiles
-    - "www.linkedin.com/in/mmylonak"
+    - "https://www.linkedin.com/in/mmylonak"
     - "https://www.facebook.com/mike.mylonak"
     - "https://github.com/sestus"
     - "https://stackoverflow.com/users/2254704/sestus"
@@ -251,9 +251,9 @@ whitelist:
 #  Path (examples)
 #  - Archive page should exist at path when using Liquid method or you can
 #    expect broken links (especially with breadcrumbs enabled)
-#  - <base_path>/tags/my-awesome-tag/index.html ~> path: /tags/
-#  - <base_path/categories/my-awesome-category/index.html ~> path: /categories/
-#  - <base_path/my-awesome-category/index.html ~> path: /
+#  - <base_path>/tags/my-awesome-tag/index.md ~> path: /tags/
+#  - <base_path/categories/my-awesome-category/index.md ~> path: /categories/
+#  - <base_path/my-awesome-category/index.md ~> path: /
 category_archive:
   type: liquid
   path: /categories/
@@ -301,8 +301,29 @@ typed_lines:
 dynamic-typing: true
 shuffle: true # Shuffle the lines.
 loop: false
-loop: false
 loop-count: false # Set False for infinite loop, or set any number for finite loop.
 type-speed: 8
 start-delay: 200
 delete-delay: 5000
+
+events:
+- image: "/assets/images/timeline/ubs.png"
+  date: "July 2017 - Present"
+  description: "Front Office Data Scientist - Quant Developer at UBS, London. Building the next gen Data Science Platform for the eFX trading desk"
+- image: "/assets/images/timeline/commission.png"
+  date: "March 13-15 2017"
+  description: "Selected amongst several teams to represent Greece in the <a href=\"https://ec.europa.eu/eurostat/cros/content/european-big-data-hackathon-0_en\">European Big Data Hackathon</a>. Ranked 9th out of 22 EU countries"
+- image: "/assets/images/timeline/atypon.jpg"
+  date: "April 2016 - June 2017"
+  description: "Software Engineer (Big Data) at Atypon, Athens, worked on the development and maintenance of <a href=\"https://www.atypon.com/products/literatum\">Literatum</a>"
+- image: "/assets/images/timeline/kapodistrian.png"
+  date: "November 2015 - December 2017"
+  description: "Master of Science (MSc) - National and Kapodistrian University of Athens, Department of Informatics and Telecommunications - Computer Networking"
+- image: "/assets/images/timeline/nokia.png"
+  date: "April 2014 - March 2016"
+  description: "Software Engineer at Nokia, Athens, worked at a POC on <a href=\"https://networks.nokia.com/solutions/flexible-service-chaining\"> Flexible Service Chaining</a>, and on the development - maintenance of <a href=\"https://networks.nokia.com/products/flexi-network-gateway\">Flexi NG</a>"
+- image: "/assets/images/timeline/ntua.png"
+  date: "October 2006 - May 2013"
+  description: "Master of Engineering (MEng) - National Technical University of Athens - Electrical and Computer Engineering"
+
+timeline-img: "/assets/images/timeline/default.png"
