@@ -4,6 +4,10 @@ layout: archive
 
 {{ content }}
 
+<p class="notice--info">
+  Group by <a href="/year-archive/" rel="permalink">Year</a> or <a href="/tags/" rel="permalink">Tag </a>instead.
+</p>
+
 {% assign categories_max = 0 %}
 {% for category in site.categories %}
   {% if category[1].size > categories_max %}
