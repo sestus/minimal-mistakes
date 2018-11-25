@@ -67,6 +67,9 @@ algolia:
   index_name             : BLOG
   search_only_api_key    : cb4283ddf0b52f254fb0950da56ab86d
   powered_by             : false # true (default), false
+  files_to_exclude:
+    - _pages/sitemap.md
+    - _pages/tags.html
 google:
   search_engine_id       : # YOUR_SEARCH_ENGINE_ID
   instant_search         : # false (default), true
@@ -327,3 +330,4 @@ events:
   description: "Master of Engineering (MEng) - National Technical University of Athens - Electrical and Computer Engineering"
 
 timeline-img: "/assets/images/timeline/default.png"
+
