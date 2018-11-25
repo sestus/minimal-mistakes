@@ -19,7 +19,7 @@ locale                   : "en-US"
 title                    : "Mike Mylonakis"
 title_separator          : "|"
 name                     : "Mike Mylonakis"
-description              : "Blog and personal website of Mike Mylonakis. Opinions expressed here are my own and do not necessarily reflect those of my employer"
+description              : "Blog and personal website of Mike Mylonakis."
 url                      : "https://mikemylonakis.com"
 #baseurl                  : "/minimal-mistakes"
 repository               : "sestus/minimal-mistakes"
@@ -74,8 +74,8 @@ google:
   search_engine_id       : # YOUR_SEARCH_ENGINE_ID
   instant_search         : # false (default), true
 # SEO Related
-google_site_verification :
-bing_site_verification   :
+google_site_verification : "At_R48umEdNNF4N6Qea8biUyiF9SdA-GPsR5xyZUPNo"
+bing_site_verification   : 
 yandex_site_verification :
 naver_site_verification  :
 
