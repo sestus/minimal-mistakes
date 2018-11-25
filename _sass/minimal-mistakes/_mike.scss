@@ -39,7 +39,7 @@
 
 
 #timeline {
-  margin-top: 4em;
+  margin-top: 2em;
 }
 
 #timeline-figure {
@@ -54,4 +54,19 @@
   background: inherit;
   border: 1px solid;
   //margin-left: 3em !important;
+}
+
+.about-footer {
+  margin-left: 33%;
+}
+
+.language-bash .highlight .nv {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.singlewide {
+  width: 100%;
 }
