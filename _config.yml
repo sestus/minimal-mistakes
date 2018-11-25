@@ -288,8 +288,8 @@ defaults:
       path: ""
       type: posts
     values:
-      layout: single
-      author_profile: true
+      layout: single-wide
+      author_profile: false
       read_time: true
       comments: # true
       share: true

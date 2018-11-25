@@ -30,16 +30,21 @@
 {% endif %}
 
 
-            <div id="typed">
-                <span class="intro-text">{{ content }}</span>
-                    <div id="typed_avatar">
-                        <img class="typed-img" src="{{ site.author.avatar }}" alt="Mike Mylonakis" itemprop="image">
-                    </div>
-            </div>
-
+<div id="typed">
+    <span class="intro-text">{{ content }}</span>
+        <div id="typed_avatar">
+            <img class="typed-img" src="{{site.baseurl}}{{ site.author.avatar }}" alt="Mike Mylonakis" itemprop="image">
+        </div>
+</div>
 
 {% include scripts.html %}
 
+<div class="page__footer">
+    <footer>
+        {% include footer/custom.html %}
+        {% include_cached footer.html %}
+    </footer>
+</div>
 
 </body>
 </html>
