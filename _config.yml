@@ -66,7 +66,7 @@ algolia:
   application_id         : YLTCJ4RT60
   index_name             : BLOG
   search_only_api_key    : cb4283ddf0b52f254fb0950da56ab86d
-  powered_by             : false # true (default), false
+  powered_by             : true # true (default), false
   files_to_exclude:
     - _pages/sitemap.md
     - _pages/tags.html
