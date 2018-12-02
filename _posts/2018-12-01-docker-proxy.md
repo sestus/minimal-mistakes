@@ -53,7 +53,7 @@ Environment="HTTP_PROXY=http://proxy.example.com:80/"
 </p>
 
 This works fine, if the web proxy does not use authentication or, if it does use it, our credentials do not
-contain special characters. If my password looks like this `MyAw3s0m3p^$$`, and I create the systemd configuration
+contain special characters. If my password looks like this `MyAw3s0m3p^$$.!`, and I create the systemd configuration
 file as instructed:
 
 ```ini
@@ -69,8 +69,8 @@ Error response from daemon: Get https://registry-1.docker.io/v2/: proxyconnect t
 ```
 
 There are two issues here. First of all, golang (which powers docker) doesn't like these special characters in the url. We
-need to [urlencode](https://www.url-encode-decode.com/) this password. `http://myusername:MyAw3s0m3p^^s@proxy.example.com:80/`
-becomes `http%3A%2F%2Fmyusername%3AMyAw3s0m3p%5E%5Es%40proxy.example.com%3A80%2F`. But even the urlencoded url won't work,
+need to [urlencode](https://www.url-encode-decode.com/) this password. `http://myusername:MyAw3s0m3p^$$.!@proxy.example.com:80/`
+becomes `http%3A%2F%2Fmyusername%3AMyAw3s0m3p%5E%24%24.%21%40proxy.example.com%3A80%2F`. But even the urlencoded url won't work,
 cause systemd doesn't like the `%` and some other special characters in there. There is [systemd-escape](https://www.freedesktop.org/software/systemd/man/systemd-escape.html) 
 which escapes strings for usage in systemd unit names, but this didn't work for me. My solution to that was to use the `EnironmentFile`
 directive instead of the `Environment`. Instead of specifying the environment variables in the systemd configuration file,
@@ -85,7 +85,7 @@ EnvironmentFile=/etc/system/default/docker
 And the `/etc/system/default/docker` file looks like this:
 
 ```
-http_proxy='http%3A%2F%2Fmyusername%3AMyAw3s0m3p%5E%5Es%40proxy.example.com%3A80%2F'
+http_proxy='http%3A%2F%2Fmyusername%3AMyAw3s0m3p%5E%24%24.%21%40proxy.example.com%3A80%2F'
 ```
 
 This is a good practice btw, as we can restrict the permissions to that file so that it's not readable by the world. If
