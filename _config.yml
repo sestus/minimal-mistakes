@@ -70,6 +70,9 @@ algolia:
   files_to_exclude:
     - _pages/sitemap.md
     - _pages/tags.html
+    - _pages/tags.html
+    - _pages/posts-by-year.md
+    - _pages/posts-by-year.html
 google:
   search_engine_id       : # YOUR_SEARCH_ENGINE_ID
   instant_search         : # false (default), true
