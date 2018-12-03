@@ -19,6 +19,9 @@ const search = instantsearch({
 
 const hitTemplate = function(hit) {
   const url = hit.url;
+  if (hit._highlightResult == null || hit._highlightResult.html == null) {
+      return;
+  }
   const title = hit._highlightResult.title.value;
   const content = hit._highlightResult.html.value;
 
