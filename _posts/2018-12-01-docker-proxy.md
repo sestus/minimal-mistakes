@@ -58,7 +58,7 @@ file as instructed:
 
 ```ini
 [Service]
-Environment="http_proxy=http://myusername:MyAw3s0m3p^^s@proxy.example.com:80/"
+Environment="http_proxy=http://myusername:MyAw3s0m3p^$$.!@proxy.example.com:80/"
 ```
 
 docker won't be able to use the http_proxy. `docker pull` will fail miserably with an error like this:
