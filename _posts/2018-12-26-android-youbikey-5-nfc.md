@@ -1,6 +1,6 @@
 ---
-title:  "Setting up Password store on Android using Youbikey 5 NFC"
-excerpt: "How to set up the Unix Password manager on android using ya oubikey 5 NFC"
+title:  "Setting up the Unix Password Manager on Android with Youbikey 5 NFC"
+excerpt: "How to set up the Unix Password manager on android using a youbikey 5 NFC"
 header:
     teaser: /assets/images/posts/youbikey.jpg
 categories: 
@@ -24,15 +24,15 @@ secure and powerful password manager that makes my passwords available on every 
 However, there is still something that's missing: making my passwords available on my Android phone. 
 
 In this post I will address this issue by describing how to utilize the new [Youbikey 5 NFC](https://www.yubico.com/product/yubikey-5-nfc/),
-my phone's NFC reader and the apps
+an Android phone with NFC reader and the apps
 [Openkeychain](https://www.openkeychain.org/) and [Password Store](https://play.google.com/store/apps/details?id=com.zeapo.pwdstore&hl=en_US) 
-in order to bring the power of the Unix Password Manager into my Android phone. Let's start!
+in order to bring the power of the Unix Password Manager into Android. Let's start!
 
 ## Setting up the Youbikey
 
 First of all, let me explain why a Youbikey is needed. So if we want to use the Unix password manager on an Android phone,
 we need to be able to decrypt the files that contain our passwords. Now we can do that by copying the private encryption
-key into the Android phone but IMHO, putting the private key in my phone is not a good idea. That's were Youbikey comes into
+key into the Android phone but IMHO, putting the private key in an phone is not a very good idea. That's were Youbikey comes into
 the picture. Using the new [Youbikey 5 NFC](https://www.yubico.com/product/yubikey-5-nfc/) or the older
 [Youbikey Neo](https://support.yubico.com/support/solutions/articles/15000006494-yubikey-neo) we can have them store our
 private key(s), making them available to the phone only when needed, via NFC.
@@ -70,29 +70,31 @@ Here's a asciinema of what's described above:
 
 We are going to need two apps:
 
-* [Password Store](https://f-droid.org/en/packages/com.zeapo.pwdstore/) 
-* [Openkeychain](https://f-droid.org/en/packages/org.sufficientlysecure.keychain/)
+* [Openkeychain](https://f-droid.org/en/packages/org.sufficientlysecure.keychain/), which is a gpg toolchain for Android. This is need so that the encryption key can be loaded from Youbikey.
+* [Password Store](https://f-droid.org/en/packages/com.zeapo.pwdstore/), which is the Unix Password Manager implemented on Android.
 
 
 ### Setting up OpenKeyChain
 
-The setup is really easy here. Having the app installed, we open it and move the Youbikey near the NFC reader of the Android phone,
-then we 're being asked for the Youbikey pin, and the key is imported successfully. 
+The setup is really easy here. Having the app installed, we just open it and move the Youbikey near the NFC reader,
+ we 're then asked for the Youbikey pin, and the key is imported successfully. 
 
 
 ### Setting up Password store
 
-For this step, we 're going to need our password-store available in a git repository (see [here]({% post_url 2018-01-30-unix-pass %}#adding-a-remote) how to add one).
+For this step, we 're going to need our password-store in a git repository (see [here]({% post_url 2018-01-30-unix-pass %}#adding-a-remote) how to add one).
 
-We open the Password Store app, go to Settings->Crypto->Select OpenPGP Provider and select OpenKeychain. Then we add our
-git remote url, and the password-store is cloned in the App storage space. 
+We open the Password Store app, go to Settings->Crypto->Select OpenPGP Provider and select OpenKeychain. Then we add the
+git remote url for the password-store, and as soon as it's cloned we 're good to go! 
 
 
 ### Conclusion
 
-We should now be able to decrypt our password-store using an Android device and a Youbikey. The app is intuitive and easy to use,
-with search features and the ability to add / update passwords. And as an extra bonus we can use our Youbikey to add an
-extra layer of security to our 2-factor-authentication using the [Youbico Authenticator App](https://www.yubico.com/products/services-software/download/yubico-authenticator/).
+Utilizing the Unix Password Store in an Android phone is easy and secure using an NFC-enabled Youbikey. The android app
+for the Password Store is intuitive and easy to use, supports full text searching and adding / updating passwords. And 
+as an extra bonus we can use our Youbikey to add an extra layer of security to our 2-factor-authentication using the 
+[Youbico Authenticator App](https://www.yubico.com/products/services-software/download/yubico-authenticator/) as an 
+alternative to Google Authenticator. 
 
-Enjoy!
+Happy decrypting !
 
