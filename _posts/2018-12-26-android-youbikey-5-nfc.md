@@ -1,5 +1,5 @@
 ---
-title:  "Setting up Passworst store on Android using Youbikey 5 NFC"
+title:  "Setting up Password store on Android using Youbikey 5 NFC"
 excerpt: "How to set up the Unix Password manager on android using ya oubikey 5 NFC"
 header:
     teaser: /assets/images/posts/youbikey.jpg
