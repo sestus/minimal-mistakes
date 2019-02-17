@@ -27,4 +27,4 @@ last_modified_at: 2019-02-14T22:20:31-04:00
 | Round trip within  same Datacenter  |              500 μs               |
 | Packet round trip CA to Netherlands |              150 ms               |
 
-**Source**: Eliot Eshelman's [https://gist.github.com/eshelman](gist).
+**Source**: Eliot Eshelman's [gist](https://gist.github.com/eshelman).
