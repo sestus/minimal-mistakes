@@ -4,6 +4,8 @@ main:
     url: /about/
   - title: "Blog"
     url: /categories/
+  - title: "Cheat Sheets"
+    url: /cheatsheets/latencies
 #  - title: "Sitemap"
 #    url: /sitemap/
   # - title: "About"
@@ -12,3 +14,10 @@ main:
   #   url: /year-archive/
   # - title: "Sample Collections"
   #   url: /collection-archive/
+
+
+cheatsheets:
+  - title: "Cheat sheets"
+    children:
+      - title: "Latencies"
+        url: /cheatsheets/latencies
