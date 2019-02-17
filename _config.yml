@@ -287,6 +287,12 @@ compress_html:
     envs: development
 
 
+collections:
+  cheatsheets:
+    output: true
+    permalink: /:collection/:path/
+
+
 # Defaults
 defaults:
   # _posts
@@ -300,6 +306,18 @@ defaults:
       comments: true
       share: true
       related: true
+  - scope:
+      path: ""
+      type: cheatsheets
+    values:
+      layout: single
+      classes: wide
+      read_time: false
+      author_profile: false
+      share: true
+      comments: true
+      sidebar:
+        nav: "cheatsheets"
 
 # Mike
 typed_lines:
