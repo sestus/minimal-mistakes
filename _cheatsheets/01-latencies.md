@@ -6,7 +6,7 @@ last_modified_at: 2019-02-14T22:20:31-04:00
 ---
 | Type                                | Latency (order of mag - approx)   |
 | ------------------------------------|:---------------------------------:|
-| Cpu cycle (Intel Xeon Gold @3.2 GHz)|              0.3l ns               |
+| Cpu cycle (Intel Xeon Gold @3.2 GHz)|              0.31 ns               |
 | L1 cache reference/hit              |              1   ns               |
 | Branch Mispredict                   |              3   ns               |
 | L2 cache reference/hit              |              4   ns               |
