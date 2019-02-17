@@ -10,7 +10,6 @@ last_modified_at: 2019-02-14T22:20:31-04:00
 | L1 cache reference/hit              |              1   ns               |
 | Branch Mispredict                   |              3   ns               |
 | L2 cache reference/hit              |              4   ns               |
-| Branch Mispredict                   |              6   ns               |
 | Mutex lock/unlock                   |              17  ns               |
 | Main Memory Reference               |              100 ns               |
 | Read 1MB sequentially  from memory  |              3   μs               |
