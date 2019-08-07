@@ -310,8 +310,7 @@ defaults:
       path: ""
       type: cheatsheets
     values:
-      layout: single
-      classes: wide
+      layout: single-wide
       read_time: false
       author_profile: false
       share: true
