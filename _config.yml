@@ -78,6 +78,7 @@ algolia:
     - _pages/tags.html
     - _pages/posts-by-year.md
     - _pages/posts-by-year.html
+  nodes_to_index: 'p,blockquote,li,div.paragraph,td,h3,h4,div.language-bash,div.highlighter-rouge,div.highlight'
 google:
   search_engine_id       : # YOUR_SEARCH_ENGINE_ID
   instant_search         : # false (default), true
