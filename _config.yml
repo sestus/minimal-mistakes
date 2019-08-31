@@ -24,7 +24,7 @@ url                      : "https://mikemylonakis.com"
 #baseurl                  : "/minimal-mistakes"
 repository               : "sestus/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : "/assets/images/author.png"
+logo                     : # "/assets/images/author.png"
 masthead_title           : "Mike Mylonakis"
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
