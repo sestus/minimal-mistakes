@@ -20,7 +20,12 @@
 {% include_cached masthead.html %}
 
 <div class="initial-content">
-    {{ content }}
+<div id="typed">
+    <span class="intro-text">{{ content }}</span>
+        <div id="typed_avatar">
+            <img class="typed-img" src="{{site.baseurl}}{{ site.author.avatar }}" alt="Mike Mylonakis" itemprop="image">
+        </div>
+</div>
 </div>
 
 {% if site.search == true %}
@@ -30,12 +35,6 @@
 {% endif %}
 
 
-<div id="typed">
-    <span class="intro-text">{{ content }}</span>
-        <div id="typed_avatar">
-            <img class="typed-img" src="{{site.baseurl}}{{ site.author.avatar }}" alt="Mike Mylonakis" itemprop="image">
-        </div>
-</div>
 
 {% include scripts.html %}
 
