@@ -4,6 +4,8 @@ main:
     url: /about/
   - title: "Blog"
     url: /categories/
+  - title: "Tools"
+    url: /tools/
   - title: "Cheat Sheets"
     url: /cheatsheets/
 #  - title: "Sitemap"
@@ -23,3 +25,9 @@ cheatsheets:
         url: /cheatsheets/latencies
       - title: "SSL certificates"
         url: /cheatsheets/ssl
+
+tools:
+  - title: Tools
+    children:
+      - title: "Latencies"
+        url: /cheatsheets/latencies

@@ -298,7 +298,9 @@ collections:
   cheatsheets:
     output: true
     permalink: /:collection/:path/
-
+  tools:
+    output: true
+    permalink: /:collection/:path/
 
 # Defaults
 defaults:
@@ -313,6 +315,8 @@ defaults:
       comments: true
       share: true
       related: true
+      sidebar:
+        nav: "main"
   - scope:
       path: ""
       type: cheatsheets
@@ -322,8 +326,15 @@ defaults:
       author_profile: false
       share: true
       comments: true
-      sidebar:
-        nav: "cheatsheets"
+  - scope:
+      path: ""
+      type: tools
+    values:
+      layout: single-wide
+      read_time: false
+      author_profile: false
+      share: true
+      comments: true
 
 # Mike
 typed_lines:

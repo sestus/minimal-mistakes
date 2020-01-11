@@ -63,3 +63,19 @@
 .singlewide {
   width: 100%;
 }
+
+table.latencies {
+  display: inline-table;
+}
+
+.fullwidth {
+  padding-right: 0px;
+}
+
+td:nth-child(1) {
+  text-align: left; /* NEW */
+}
+
+td:nth-child(2) {
+  text-align: right; /* NEW */
+}

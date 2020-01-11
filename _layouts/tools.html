@@ -5,7 +5,7 @@ layout: archive
 {% capture written_label %}'None'{% endcapture %}
 
 {% for collection in site.collections %}
-    {% if collection.label == "cheatsheets" %}
+    {% if collection.label == "tools" %}
         {% capture label %}{{ collection.label }}{% endcapture %}
         {% if label != written_label %}
             <h2 id="{{ label | slugify }}" class="archive__subtitle">{{ label }}</h2>
