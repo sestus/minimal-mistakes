@@ -76,6 +76,18 @@ td:nth-child(1) {
   text-align: left; /* NEW */
 }
 
-td:nth-child(2) {
+td:last-child {
   text-align: right; /* NEW */
+}
+
+.left-split {
+  width: 49%;
+  float: left;
+  text-align: center;
+}
+
+.right-split {
+  margin-left: 51%;
+  width: 49%;
+  text-align: center
 }

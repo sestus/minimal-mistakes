@@ -146,3 +146,15 @@ $(document).ready(function() {
       }
   });
 });
+
+
+function onJwtInChanged() {
+  var x = document.getElementById("jwt-in").value;
+  document.getElementById("jwt-out").value = x;
+}
+
+var onJwtOutChanged = function () {
+  var x = document.getElementById("jwt-out").value;
+  document.getElementById("jwt-in").value = x;
+}
+
