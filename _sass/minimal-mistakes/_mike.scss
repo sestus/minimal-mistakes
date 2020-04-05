@@ -91,3 +91,96 @@ td:last-child {
   width: 49%;
   text-align: center
 }
+
+.hwt-container {
+  position: relative;
+  overflow: hidden !important;
+  -webkit-text-size-adjust: none !important;
+  text-align: left;
+  background-color: #0e0328;
+  font-family: $sans-serif;
+}
+
+.hwt-backdrop {
+  position: absolute !important;
+  top: 0 !important;
+  right: -99px !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  padding-right: 99px !important;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+}
+
+.hwt-highlights {
+  width: auto !important;
+  height: auto !important;
+  border-color: transparent !important;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  color: transparent !important;
+  overflow: hidden !important;
+}
+
+.hwt-input {
+  display: block !important;
+  position: relative !important;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  font: inherit;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+}
+
+.hwt-content {
+  background: none transparent !important;
+}
+
+.hwt-content mark {
+  padding: 0 !important;
+  color: inherit;
+}
+
+
+
+mark.jwt-error {
+  background-color: indianred;
+}
+
+mark.jwt-payload {
+
+}
+
+mark.jwt-header {
+
+}
+
+mark.jwt-signature {
+
+}
+
+textarea {
+  overflow-y: auto;
+  margin:50px auto;
+
+}
+
+.blue-text, mark.blue-text{
+  color: #0099a1 !important;
+  background-color: inherit;
+}
+
+.blue-bg {
+  background-color: #004d53 !important;
+}
+
+.ping-text, mark.ping-text{
+  color: #ff43a0 !important;
+  background-color: inherit;
+
+}
+
+.ping-bg {
+  background-color: #942450 !important;
+}
