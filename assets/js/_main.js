@@ -145,52 +145,5 @@ $(document).ready(function() {
           )
       }
   });
-
-  $('#jwt-payload').highlightWithinTextarea({
-    highlight: [
-      {
-        highlight: highlightError,
-        className: 'jwt-error'
-      }
-    ]
-  });
-
-  $('#jwt-header').highlightWithinTextarea({
-    highlight: [
-      {
-        highlight: highlightError,
-        className: 'jwt-error'
-      }
-    ]
-  });
-
-  $('#jwt-in').highlightWithinTextarea({
-    highlight: [
-      {
-        highlight: highlightJwtHeader,
-        className: 'ping-bg'
-      },
-      {
-        highlight: highlightJwtPayload,
-        className: 'blue-bg'
-      },
-      {
-        highlight: highlightJwtSignature,
-        className: 'jwt-signature'
-      },
-      {
-        highlight: jwtInhighlightError,
-        className: 'jwt-error'
-      }
-    ]
-  });
-  $('#jwt-signature').highlightWithinTextarea({
-    highlight: [
-      {
-        highlight: highlightJwtSignature,
-        className: 'jwt-signature'
-      },
-    ]
-  });
 });
 

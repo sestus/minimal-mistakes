@@ -85,3 +85,12 @@ function placeCaretAtEnd(el) {
         textRange.select();
     }
 }
+
+var jwtIn = document.getElementById("jwt-in");
+var jwtHeader = document.getElementById("jwt-header");
+var jwtPayload = document.getElementById("jwt-payload");
+var jwtSignature = document.getElementById("jwt-signature");
+var jwtInEditor = CodeMirror.fromTextArea(jwtIn, { lineNumbers : true, mode: 'javascript' });
+var jwtHeaderEditor = CodeMirror.fromTextArea(jwtHeader, { lineNumbers : true, mode: 'javascript' });
+var jwtPayloadEditor = CodeMirror.fromTextArea(jwtPayload, { lineNumbers : true, mode: 'javascript' });
+var jwtSignatureEditor = CodeMirror.fromTextArea(jwtSignature, { lineNumbers : true, mode: 'javascript' });
