@@ -1,7 +1,3 @@
-
-function onJwtOutChanged(input) {
-}
-
 function parseJwt (base64Payload) {
     var base64 = base64Payload.replace(/-/g, '+').replace(/_/g, '/');
     try {
@@ -16,81 +12,75 @@ function parseJwt (base64Payload) {
     return ret;
 }
 
+CodeMirror.defineSimpleMode("jwtmode", {
+    start: [
+        {regex: /(^[A-Za-z0-9-_=]+)(\.)([A-Za-z0-9-_=]+)(\.?)([A-Za-z0-9-_.+/=]*$)/, token: ["jwt-header", null, "jwt-payload", null, "jwt-signature"], sol:true}
+    ]
+});
 
-function highlightJwtHeader(input) {
-    var headerPart = input.split('.')[0];
-    var header = undefined;
-    if (headerPart !== undefined) {
-        header = parseJwt(headerPart);
-    }
-    var ret = header === undefined ? "Not a valid JWT" : JSON.stringify(header, null, 2);
-    document.getElementById("jwt-header").value = ret;
-    $('#jwt-header').highlightWithinTextarea('update');
-    $('#jwt-payload').highlightWithinTextarea('update');
-    if (header !== undefined)
-        return headerPart;
-}
-
-function highlightJwtPayload(input) {
-    var payloadPart = input.split('.')[1];
-    var payload = undefined;
-    if (payloadPart !== undefined) {
-        payload = parseJwt(payloadPart);
-    }
-    var ret = payload === undefined ? "Not a valid JWT" : JSON.stringify(payload, null, 2);
-    document.getElementById("jwt-payload").value = ret;
-    $('#jwt-header').highlightWithinTextarea('update');
-    $('#jwt-payload').highlightWithinTextarea('update');
-    if (payload !== undefined)
-        return payloadPart;
-}
-
-function highlightJwtSignature(text) {
-
-}
-
-function highlightError(text) {
-    if (text === "Not a valid JWT") {
-        return text;
-    }
-}
-
-function jwtInhighlightError(text) {
-    // var parts = text.split('.');
-    // if (parts.length !== 3) {
-    //     $('#jwt-header').highlightWithinTextarea('update');
-    //     $('#jwt-payload').highlightWithinTextarea('update');
-    //     return text;
-    // }
-}
-
-function highlightDecodedJwt(text) {
-
-}
-
-function placeCaretAtEnd(el) {
-    el.focus();
-    if (typeof window.getSelection != "undefined"
-        && typeof document.createRange != "undefined") {
-        var range = document.createRange();
-        range.selectNodeContents(el);
-        range.collapse(false);
-        var sel = window.getSelection();
-        sel.removeAllRanges();
-        sel.addRange(range);
-    } else if (typeof document.body.createTextRange != "undefined") {
-        var textRange = document.body.createTextRange();
-        textRange.moveToElementText(el);
-        textRange.collapse(false);
-        textRange.select();
-    }
-}
+var defaultJwtIn = document.createElement("div", {});
+defaultJwtIn.innerHTML = "<span class='ping-text'>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span>.<span class='blue-text'>eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkrDtGhuIETDs8OoIiwiYWRtaW4iOnRydWV9</span>.<span class='orange-text'>469tBeJmYLERjlKi9u6gylb-2NsjHLC_6kZNdtoOGsA</span>";
+var defaultJwtHeader = `{
+ "alg": "HS256",
+ "typ": "JWT"
+}`;
+var defaultJwtPayload = `{
+  "sub": "1234567890",
+  "name": "Jôhn Dóè",
+  "admin": true 
+}`;
 
 var jwtIn = document.getElementById("jwt-in");
 var jwtHeader = document.getElementById("jwt-header");
 var jwtPayload = document.getElementById("jwt-payload");
 var jwtSignature = document.getElementById("jwt-signature");
-var jwtInEditor = CodeMirror.fromTextArea(jwtIn, { lineNumbers : true, mode: 'javascript' });
-var jwtHeaderEditor = CodeMirror.fromTextArea(jwtHeader, { lineNumbers : true, mode: 'javascript' });
-var jwtPayloadEditor = CodeMirror.fromTextArea(jwtPayload, { lineNumbers : true, mode: 'javascript' });
-var jwtSignatureEditor = CodeMirror.fromTextArea(jwtSignature, { lineNumbers : true, mode: 'javascript' });
+var jwtInEditor = CodeMirror.fromTextArea(jwtIn, {theme: 'night', mode: 'jwtmode', viewportMargin: Infinity, autofocus: true, placeholder: defaultJwtIn, lineWrapping: true, minLines: 4 });
+var jwtHeaderEditor = CodeMirror.fromTextArea(jwtHeader, {lineNumbers: true, theme: 'night', mode: "application/json",matchBrackets: true, viewportMargin: Infinity, placeholder: defaultJwtHeader, lineWrapping: true, gutters: ["Codemirror-lint-markers"], lint: true});
+var jwtPayloadEditor = CodeMirror.fromTextArea(jwtPayload, {lineNumbers: true, theme: 'night', mode: "application/json",matchBrackets: true, viewportMargin: Infinity, placeholder: defaultJwtHeader, lineWrapping: true, gutters: ["Codemirror-lint-markers"], lint: true});
+var jwtSignatureEditor = CodeMirror.fromTextArea(jwtSignature, {theme: 'night', mode: 'javascript', viewportMargin: Infinity });
+
+
+function setJwtHeader(input) {
+    if (input === "") {
+        jwtHeaderEditor.setValue("");
+        return;
+    }
+    var headerPart = input.split('.')[0];
+    var header = undefined;
+    if (headerPart !== undefined) {
+        header = parseJwt(headerPart);
+    }
+    var ret = header === undefined ? "Not a valid JWT header" : JSON.stringify(header, null, 2);
+    jwtHeaderEditor.setValue(ret);
+}
+
+function setJwtPayload(input) {
+    if (input === "") {
+        jwtPayloadEditor.setValue("");
+        return;
+    }
+    var payloadPart = input.split('.')[1];
+    var payload = undefined;
+    var ret = undefined;
+    if (payloadPart !== undefined) {
+        payload = parseJwt(payloadPart);
+    }
+    if (payload) {
+        ret = JSON.stringify(payload, null, 2);
+    }
+    else if (payloadPart) {
+        ret = "Not a valid JWT payload";
+    }
+    else {
+        ret = "N/A";
+    }
+    jwtPayloadEditor.setValue(ret);
+}
+
+jwtInEditor.on("change", function () {
+    var text = jwtInEditor.getValue();
+    setJwtHeader(text);
+    setJwtPayload(text);
+});
+
+document.getElementById("page-title").innerHTML = "<span class='ping-text'>J</span><span class='blue-text'>W</span><span class='orange-text'>T</span> decoder";

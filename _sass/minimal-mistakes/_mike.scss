@@ -92,21 +92,29 @@ td:last-child {
   text-align: center
 }
 
-.blue-text, mark.blue-text{
-  color: #0099a1 !important;
+.blue-text {
+  color: #00adb5 !important;
   background-color: inherit;
 }
 
-.blue-bg {
-  background-color: #004d53 !important;
-}
-
-.ping-text, mark.ping-text{
+.ping-text {
   color: #ff43a0 !important;
   background-color: inherit;
-
 }
 
-.ping-bg {
-  background-color: #942450 !important;
+.orange-text {
+  color: coral !important;
+  background-color: inherit;
+}
+
+.cm-jwt-header {
+  @extend .ping-text;
+}
+
+.cm-jwt-payload {
+  @extend .blue-text;
+}
+
+.cm-jwt-signature {
+  @extend .orange-text;
 }
