@@ -5,6 +5,7 @@ excerpt: "JSON Web Token viewer"
 classes: wide
 last_modified_at: 2020-04-16T01:10:31-02:00
 ---
+<link rel="stylesheet" href="{{site.baseurl}}/assets/js/mike/codemirror/lib/codemirror.css">
 <link rel="stylesheet" href="{{site.baseurl}}/assets/js/mike/codemirror/theme/night.css">
 <link rel="stylesheet" href="{{site.baseurl}}/assets/js/mike/codemirror/addon/lint/lint.css">
 <script type="text/javascript" src="{{site.baseurl}}/assets/js/mike/codemirror/lib/codemirror.js"></script>
