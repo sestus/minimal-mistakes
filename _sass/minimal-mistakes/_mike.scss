@@ -80,15 +80,15 @@ td:last-child {
   text-align: right; /* NEW */
 }
 
-.left-split {
-  width: 49%;
+.jwt-left-split {
+  width: 46%;
   float: left;
   text-align: center;
 }
 
-.right-split {
-  margin-left: 51%;
-  width: 49%;
+.jwt-right-split {
+  margin-left: 47%;
+  width: 56%;
   text-align: center
 }
 
@@ -107,6 +107,10 @@ td:last-child {
   background-color: inherit;
 }
 
+.red-bg {
+  background-color: #8e5353;
+}
+
 .cm-jwt-header {
   @extend .ping-text;
 }
@@ -117,4 +121,13 @@ td:last-child {
 
 .cm-jwt-signature {
   @extend .orange-text;
+}
+
+.jwt-comment {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+  color: silver !important;
+  opacity: 0.5;
 }

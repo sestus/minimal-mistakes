@@ -25,7 +25,8 @@ CodeMirror.registerHelper("lint", "json", function(text) {
   }
   // for jsonlint's web dist jsonlint is exported as an object with a single property parser, of which parseError
   // is a subproperty
-  var jsonlint = window.jsonlint.parser || window.jsonlint
+  var jsonlint =  window.jsonlint;
+  window.JSHINT = JSHINT
   jsonlint.parseError = function(str, hash) {
     var loc = hash.loc;
     found.push({from: CodeMirror.Pos(loc.first_line - 1, loc.first_column),

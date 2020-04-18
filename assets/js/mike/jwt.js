@@ -1,3 +1,5 @@
+
+
 function parseJwt (base64Payload) {
     var base64 = base64Payload.replace(/-/g, '+').replace(/_/g, '/');
     try {
@@ -19,26 +21,31 @@ CodeMirror.defineSimpleMode("jwtmode", {
 });
 
 var defaultJwtIn = document.createElement("div", {});
-defaultJwtIn.innerHTML = "<span class='ping-text'>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span>.<span class='blue-text'>eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkrDtGhuIETDs8OoIiwiYWRtaW4iOnRydWV9</span>.<span class='orange-text'>469tBeJmYLERjlKi9u6gylb-2NsjHLC_6kZNdtoOGsA</span>";
-var defaultJwtHeader = `{
- "alg": "HS256",
- "typ": "JWT"
-}`;
-var defaultJwtPayload = `{
-  "sub": "1234567890",
-  "name": "Jôhn Dóè",
-  "admin": true 
-}`;
+defaultJwtIn.innerHTML = "<span class='ping-text'>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span>.<span class='blue-text'>eyJzdWIiOiJmb28iLCJuYW1lIjoiTWlrZSIsImlhdCI6MTU4NjQ1NDA4OX0</span>.<span class='orange-text'>imk7ygr-4hCWAPheI-hlNG70lbYAPAX_d1hSwZcTGjc</span>";
+
+var defaultHeaader = document.createElement("div", {});
+defaultHeaader.innerHTML = `<div class="CodeMirror-code" role="presentation"><pre class=" CodeMirror-line " role="presentation"><span style="padding-right: 0.1px;" role="presentation">{</span></pre><pre class=" CodeMirror-line " role="presentation"><span style="padding-right: 0.1px;" role="presentation"> &nbsp;<span class="cm-string cm-property">"alg"</span>: <span class="cm-string">"HS256"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span style="padding-right: 0.1px;" role="presentation"> &nbsp;<span class="cm-string cm-property">"typ"</span>: <span class="cm-string">"JWT"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span style="padding-right: 0.1px;" role="presentation">}</span></pre></div>`
+
+var defaultPayload = document.createElement("div", {});
+defaultPayload.innerHTML = `<div class="CodeMirror-code" role="presentation" style=""><pre class=" CodeMirror-line " role="presentation"><span style="padding-right: 0.1px;" role="presentation">{</span></pre><pre class=" CodeMirror-line " role="presentation"><span style="padding-right: 0.1px;" role="presentation">  <span class="cm-string cm-property">"sub"</span>: <span class="cm-string">"foo"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span style="padding-right: 0.1px;" role="presentation">  <span class="cm-string cm-property">"name"</span>: <span class="cm-string">"Mike"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span style="padding-right: 0.1px;" role="presentation">  <span class="cm-string cm-property">"iat"</span>: <span class="cm-number">158645408</span> <span class="cm-comment jwt-comment">// Thu, 09 Apr 2020 17:41:29 GMT9</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span style="padding-right: 0.1px;" role="presentation">}</span></pre></div>`;
+
+var signature= ' Cannot verify the Signature without the key';
 
 var jwtIn = document.getElementById("jwt-in");
 var jwtHeader = document.getElementById("jwt-header");
 var jwtPayload = document.getElementById("jwt-payload");
 var jwtSignature = document.getElementById("jwt-signature");
 var jwtInEditor = CodeMirror.fromTextArea(jwtIn, {theme: 'night', mode: 'jwtmode', viewportMargin: Infinity, autofocus: true, placeholder: defaultJwtIn, lineWrapping: true, minLines: 4 });
-var jwtHeaderEditor = CodeMirror.fromTextArea(jwtHeader, {lineNumbers: true, theme: 'night', mode: "application/json",matchBrackets: true, viewportMargin: Infinity, placeholder: defaultJwtHeader, lineWrapping: true, gutters: ["Codemirror-lint-markers"], lint: true});
-var jwtPayloadEditor = CodeMirror.fromTextArea(jwtPayload, {lineNumbers: true, theme: 'night', mode: "application/json",matchBrackets: true, viewportMargin: Infinity, placeholder: defaultJwtHeader, lineWrapping: true, gutters: ["Codemirror-lint-markers"], lint: true});
-var jwtSignatureEditor = CodeMirror.fromTextArea(jwtSignature, {theme: 'night', mode: 'javascript', viewportMargin: Infinity });
+var jwtHeaderEditor = CodeMirror.fromTextArea(jwtHeader, {readOnly: 'nocursor', theme: 'night', mode: "application/json",matchBrackets: true, viewportMargin: Infinity, placeholder: defaultHeaader, lineWrapping: true});
+var jwtPayloadEditor = CodeMirror.fromTextArea(jwtPayload, {readOnly: 'nocursor', theme: 'night', mode: "application/json",matchBrackets: true, viewportMargin: Infinity, placeholder: defaultPayload});
+var jwtSignatureEditor = CodeMirror.fromTextArea(jwtSignature, {readOnly: 'nocursor', theme: 'night', mode: 'javascript', viewportMargin: Infinity, placeholder: signature, });
 
+jwtSignatureEditor.setSize(null, '45px');
+
+function parseUnixTimestamp(unixTimestamp) {
+    var date = new Date(unixTimestamp * 1000)
+    return date.toUTCString();
+}
 
 function setJwtHeader(input) {
     if (input === "") {
@@ -50,8 +57,14 @@ function setJwtHeader(input) {
     if (headerPart !== undefined) {
         header = parseJwt(headerPart);
     }
-    var ret = header === undefined ? "Not a valid JWT header" : JSON.stringify(header, null, 2);
-    jwtHeaderEditor.setValue(ret);
+    if (header === undefined) {
+        var ret = "Not a valid JWT header";
+        jwtHeaderEditor.setValue(ret);
+        jwtHeaderEditor.markText({line: 0, ch: 0}, {line: 0, ch: ret.length}, {className: 'red-bg'});
+    }
+    else {
+        jwtHeaderEditor.setValue(JSON.stringify(header, null, 2));
+    }
 }
 
 function setJwtPayload(input) {
@@ -66,19 +79,45 @@ function setJwtPayload(input) {
         payload = parseJwt(payloadPart);
     }
     if (payload) {
+        var iat = payload.iat;
+        var exp = payload.exp;
         ret = JSON.stringify(payload, null, 2);
+        jwtPayloadEditor.setValue(ret);
+        var index = 0;
+        jwtPayloadEditor.doc.eachLine( function (line) {
+            var text = line.text;
+            if (iat !== undefined && text.includes(iat)) {
+                const dateTime = parseUnixTimestamp(iat);
+                jwtPayloadEditor.replaceRange(" // " + dateTime, {line: index, ch: text.length - 1}, {line: index, ch: text.length - 1});
+                const newText = line.text;
+                jwtPayloadEditor.markText({line: index, ch: text.length}, {line: index, ch: newText.length}, {className: 'jwt-comment'})
+            }
+            if (exp !== undefined && text.includes(exp)) {
+                const dateTime = parseUnixTimestamp(exp);
+                jwtPayloadEditor.replaceRange(" // " + dateTime, {line: index, ch: text.length - 1}, {line: index, ch: text.length - 1});
+                const newText = line.text;
+                jwtPayloadEditor.markText({line: index, ch: text.length}, {line: index, ch: newText.length}, {className: 'jwt-comment'})
+            }
+            index++;
+        })
     }
     else if (payloadPart) {
         ret = "Not a valid JWT payload";
+        jwtPayloadEditor.setValue(ret);
+        jwtPayloadEditor.markText({line: 0, ch: 0}, {line: 0, ch: ret.length}, {className: 'red-bg'});
     }
     else {
         ret = "N/A";
+        jwtPayloadEditor.setValue(ret);
+        jwtPayloadEditor.markText({line: 0, ch: 0}, {line: 0, ch: ret.length}, {className: 'red-bg'});
     }
-    jwtPayloadEditor.setValue(ret);
 }
 
 jwtInEditor.on("change", function () {
     var text = jwtInEditor.getValue();
+    if (text.includes("\n")) {
+        jwtInEditor.setValue(jwtInEditor.getValue().replace("\n",""));
+    }
     setJwtHeader(text);
     setJwtPayload(text);
 });
