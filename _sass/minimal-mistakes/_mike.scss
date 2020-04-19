@@ -92,6 +92,21 @@ td:last-child {
   text-align: center
 }
 
+@media (max-width: 768px) {
+  .jwt-left-split {
+    width: 100%;
+    float: none;
+    text-align: center;
+  }
+
+  .jwt-right-split {
+    margin-left: revert;
+    width: 100%;
+    float: none;
+    text-align: center;
+  }
+}
+
 .blue-text {
   color: #00adb5 !important;
   background-color: inherit;
