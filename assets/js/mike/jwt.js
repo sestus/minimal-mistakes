@@ -36,8 +36,8 @@ var jwtHeader = document.getElementById("jwt-header");
 var jwtPayload = document.getElementById("jwt-payload");
 var jwtSignature = document.getElementById("jwt-signature");
 var jwtInEditor = CodeMirror.fromTextArea(jwtIn, {theme: 'night', mode: 'jwtmode', viewportMargin: Infinity, autofocus: true, placeholder: defaultJwtIn, lineWrapping: true, minLines: 4 });
-var jwtHeaderEditor = CodeMirror.fromTextArea(jwtHeader, {readOnly: 'nocursor', theme: 'night', mode: "application/json",matchBrackets: true, viewportMargin: Infinity, placeholder: defaultHeaader, lineWrapping: true});
-var jwtPayloadEditor = CodeMirror.fromTextArea(jwtPayload, {readOnly: 'nocursor', theme: 'night', mode: "application/json",matchBrackets: true, viewportMargin: Infinity, placeholder: defaultPayload});
+var jwtHeaderEditor = CodeMirror.fromTextArea(jwtHeader, {readOnly: true, theme: 'night', mode: "application/json",matchBrackets: true, viewportMargin: Infinity, placeholder: defaultHeaader, lineWrapping: true});
+var jwtPayloadEditor = CodeMirror.fromTextArea(jwtPayload, {readOnly: true, theme: 'night', mode: "application/json",matchBrackets: true, viewportMargin: Infinity, placeholder: defaultPayload});
 var jwtSignatureEditor = CodeMirror.fromTextArea(jwtSignature, {readOnly: 'nocursor', theme: 'night', mode: 'javascript', viewportMargin: Infinity, placeholder: signature, });
 
 jwtSignatureEditor.setSize(null, '45px');
@@ -88,15 +88,17 @@ function setJwtPayload(input) {
             var text = line.text;
             if (iat !== undefined && text.includes(iat)) {
                 const dateTime = parseUnixTimestamp(iat);
-                jwtPayloadEditor.replaceRange(" // " + dateTime, {line: index, ch: text.length - 1}, {line: index, ch: text.length - 1});
+                jwtPayloadEditor.replaceRange(" // " + dateTime, {line: index, ch: text.length}, {line: index, ch: text.length});
                 const newText = line.text;
                 jwtPayloadEditor.markText({line: index, ch: text.length}, {line: index, ch: newText.length}, {className: 'jwt-comment'})
+                jwtPayloadEditor.markText({line: index, ch: text.length}, {line: index, ch: newText.length}, {atomic: true, selectLeft: true})
             }
             if (exp !== undefined && text.includes(exp)) {
                 const dateTime = parseUnixTimestamp(exp);
-                jwtPayloadEditor.replaceRange(" // " + dateTime, {line: index, ch: text.length - 1}, {line: index, ch: text.length - 1});
+                jwtPayloadEditor.replaceRange(" // " + dateTime, {line: index, ch: text.length}, {line: index, ch: text.length});
                 const newText = line.text;
                 jwtPayloadEditor.markText({line: index, ch: text.length}, {line: index, ch: newText.length}, {className: 'jwt-comment'})
+                jwtPayloadEditor.markText({line: index, ch: text.length}, {line: index, ch: newText.length}, {atomic: true, selectLeft: true})
             }
             index++;
         })
