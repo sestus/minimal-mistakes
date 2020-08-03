@@ -10,7 +10,7 @@ tags:
   - automation
 toc: true
 toc_sticky: true
-
+last_modified_at: 2020-08-03T07:07:31-02:00
 ---
 
 ![no-alignment]({{ site.url }}{{ site.baseurl }}/assets/images/posts/godaddy.png)
@@ -48,7 +48,7 @@ and we ll use them in the script that will be updating our subdomain.
 ### Use the go script to update the Subdomain
 
 The go script that we 're going to use in order to update our public ip address can be found in 
-[sestus/godydns]([sestus/godydns]). We can grab the latest binaries for our OS-architecture from
+[sestus/godydns](https://github.com/sestus/godyndns/). We can grab the latest binaries for our OS-architecture from
 the [releases](https://github.com/sestus/godyndns/releases) and then we can run it like this:
 
 ```bash
