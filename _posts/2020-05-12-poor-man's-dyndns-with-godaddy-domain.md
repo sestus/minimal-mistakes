@@ -135,5 +135,7 @@ $ journalctl -u five-minute-timer.service
 ## Conclusion
 
 In this post we saw a free, DIY alternative to the paid Dynamic DNS services such as [FreeDNS](https://freedns.afraid.org/) ,
-[Dyn](https://account.dyn.com/) and others using a raspberry pi, a utility script
-from [sestus/godyndns](https://github.com/sestus/godyndns/) and a systemd timer.
+[Dyn](https://account.dyn.com/) and others . Using a raspberry pi, a utility script
+from [sestus/godyndns](https://github.com/sestus/godyndns/) and a systemd timer we were able to 
+stay up to date with our latest public IP address and update a subdomain which we will be using
+to access our home network. 
