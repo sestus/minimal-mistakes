@@ -294,7 +294,7 @@ compress_html:
 
 
 collections:
-  cheatsheets:
+  notebook:
     output: true
     permalink: /:collection/:path/
   tools:
@@ -318,7 +318,7 @@ defaults:
         nav: "main"
   - scope:
       path: ""
-      type: cheatsheets
+      type: notebook
     values:
       layout: single-wide
       read_time: false

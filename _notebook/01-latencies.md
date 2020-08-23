@@ -1,6 +1,6 @@
 ---
 title:  "Latencies"
-permalink: /cheatsheets/latencies/
+permalink: /notebook/latencies/
 excerpt: "Important computer latencies"
 last_modified_at: 2019-02-14T22:20:31-04:00
 fullwidth: true

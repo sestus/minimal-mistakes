@@ -6,8 +6,8 @@ main:
     url: /categories/
   - title: "Tools"
     url: /tools/
-  - title: "Cheat Sheets"
-    url: /cheatsheets/
+  - title: "Notebook"
+    url: /notebook/
 #  - title: "Sitemap"
 #    url: /sitemap/
   # - title: "About"
@@ -18,16 +18,18 @@ main:
   #   url: /collection-archive/
 
 
-cheatsheets:
-  - title: "Cheat sheets"
+notebook:
+  - title: " sheets"
     children:
       - title: "Latencies"
-        url: /cheatsheets/latencies
+        url: /notebook/latencies
       - title: "SSL certificates"
-        url: /cheatsheets/ssl
+        url: /notebook/ssl
+      - title: "PDF file manipulation"
+        url: /notebook/pdfs
 
 tools:
   - title: Tools
     children:
-      - title: "Latencies"
-        url: /cheatsheets/latencies
+      - title: "JWT decoder"
+        url: /tools/jwt

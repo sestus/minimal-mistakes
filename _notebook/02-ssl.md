@@ -1,6 +1,6 @@
 ---
 title:  "SSL certificates"
-permalink: /cheatsheets/ssl/
+permalink: /notebook/ssl/
 excerpt: "SSL certificate commands"
 toc: true
 toc_sticky: true
