@@ -37,7 +37,7 @@ $ gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/printer -dNOPAUSE
 
 ## Encrypt / Decrypt PDF files
 
-Fist install qpdf ( `pacman -S imagemagick` on Arch Linux )
+Fist install qpdf ( `pacman -S qpdf` on Arch Linux )
 
 ```bash
 $ qpdf --password=pdf_password --decrypt password-protected.pdf out.pdf 
@@ -46,7 +46,7 @@ $ qpdf --encrypt user_password pdf_password key_length -- in.pdf out.pdf
 
 ## Extract pages from PDF file
 
-Fist install qpdf ( `pacman -S imagemagick` on Arch Linux )
+Fist install qpdf ( `pacman -S qpdf` on Arch Linux )
 
 ```bash
 $ qpdf --empty --pages in.pdf first-last -- out.pdf
@@ -54,7 +54,7 @@ $ qpdf --empty --pages in.pdf first-last -- out.pdf
 
 ## Combine multiple PDF files
 
-Fist install qpdf ( `pacman -S imagemagick` on Arch Linux )
+Fist install qpdf ( `pacman -S qpdf` on Arch Linux )
 
 ```bash
 $ qpdf --empty --pages first.pdf second.pdf third.pdf -- out.pdf
